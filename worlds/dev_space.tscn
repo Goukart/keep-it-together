@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://c23n4pejqmkxc"]
+
+[ext_resource type="PackedScene" uid="uid://pdyp61y5r385" path="res://avatar/avatar.tscn" id="1_jyutd"]
+[ext_resource type="PackedScene" uid="uid://cc0exf48ba47f" path="res://ui/gameUI.tscn" id="2_mcb4q"]
+[ext_resource type="PackedScene" uid="uid://chrblhdrn1055" path="res://worlds/apartment.glb" id="3_fc6tg"]
+[ext_resource type="PackedScene" uid="uid://bh87qru8krpos" path="res://items/glasses.glb" id="4_8f8d3"]
+[ext_resource type="Script" path="res://items/Interactable.gd" id="5_wau0s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fyvfk"]
+size = Vector3(0.867493, 0.332001, 0.90065)
+
+[node name="DevSpace" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.841506, 0.12941, -0.524519, 0.408494, 0.482963, 0.774519, 0.353553, -0.866025, 0.353553, 0, 10, 0)
+
+[node name="Avatar" parent="." instance=ExtResource("1_jyutd")]
+
+[node name="apartment" parent="." instance=ExtResource("3_fc6tg")]
+
+[node name="GameUi" parent="." instance=ExtResource("2_mcb4q")]
+
+[node name="glasses" parent="." instance=ExtResource("4_8f8d3")]
+transform = Transform3D(-0.384408, 0, 0.923163, 0, 1, 0, -0.923163, 0, -0.384408, 5.62913, 0.179501, 6.06545)
+script = ExtResource("5_wau0s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="glasses"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0168762, 0, -0.249838)
+shape = SubResource("BoxShape3D_fyvfk")

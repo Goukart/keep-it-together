@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://pdyp61y5r385"]
+
+[ext_resource type="Script" path="res://avatar/avatar.gd" id="1_vl3ab"]
+[ext_resource type="PackedScene" uid="uid://d1o35l1ju1d12" path="res://avatar/hand.glb" id="2_bjilv"]
+[ext_resource type="Script" path="res://avatar/Ray.gd" id="3_mmikc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6x8rl"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qxfsd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n8eub"]
+
+[node name="Avatar" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_vl3ab")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6x8rl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("CapsuleMesh_qxfsd")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="hand" parent="Head" instance=ExtResource("2_bjilv")]
+transform = Transform3D(-0.11989, 0.972882, -0.197807, 0.986291, 0.0939603, -0.135656, -0.113391, -0.211358, -0.970809, -0.705815, -0.7, -0.654015)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="Ray" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -3.5)
+script = ExtResource("3_mmikc")
+
+[node name="Prompt" type="Label" parent="Head/Camera3D/Ray"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.5
+offset_top = -11.5
+offset_right = 49.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+text = "Pick up [Key]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="List" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(0.208509, 0.00980224, 0.00922217, -0.0961557, 0.37768, 0.00380884, -0.1868, -0.183471, 0.00833333, -0.306778, -0.236361, -0.467121)
+mesh = SubResource("BoxMesh_n8eub")
+skeleton = NodePath("../..")

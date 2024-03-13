@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc0exf48ba47f"]
+
+[ext_resource type="Script" path="res://ui/gameUI.gd" id="1_1t2rx"]
+
+[node name="GameUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1t2rx")
+
+[node name="PauseMenu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu"]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Quit" type="Button" parent="PauseMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 185.0
+alignment = 1
+
+[node name="Ttitle" type="Label" parent="PauseMenu/HBoxContainer2"]
+layout_mode = 2
+text = "Keep It Together"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/HBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
