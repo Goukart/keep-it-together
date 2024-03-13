@@ -17,14 +17,3 @@ Game Jam info:
 </div>
 
 this game has no bugs, they are simply apperations :P
-
-Game shit:
-Goal
-Controls
-
-
-
-
-- ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
-
-<span style="color:lime">some *lime* text</span>.
